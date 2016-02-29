@@ -50,7 +50,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
             ->setMethods( array( "add_section", "add_setting", "add_control" ) )
             ->getMock();
 
-        $wp_customize->expects( $this->once() )
+        $wp_customize->expects( $this->at( 1 ) )
             ->method( "add_setting" )
             ->with(
                 "multisite_login_logos_settings",
@@ -81,6 +81,23 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
                         "1" => "Default network logo",
                         "3" => "Custom logo",
                     ),
+                )
+            );
+
+        $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
+    }
+
+    public function test_add_multisite_login_logos_customizer_should_add_login_logo_custom_settings() {
+        $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
+            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->getMock();
+
+        $wp_customize->expects( $this->at( 3 ) )
+            ->method( "add_setting" )
+            ->with(
+                "multisite_login_logos_custom",
+                array(
+                    "type"    => "option",
                 )
             );
 

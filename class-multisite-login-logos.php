@@ -26,5 +26,9 @@ class Multisite_Login_Logos {
                 "3" => "Custom logo",
             ),
         ) );
+
+        $wp_customize->add_setting( "multisite_login_logos_custom", array(
+            "type" => "option",
+        ) );
     }
 }
