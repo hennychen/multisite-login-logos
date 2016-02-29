@@ -142,4 +142,35 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
         $accepted_args = $wp_filter["login_head"][99][ $key[1] ]["accepted_args"];
         $this->assertEquals( $expected, $accepted_args );
     }
+
+    public function test_display_multisite_login_logo_should_show_nothing_if_setting_is_default_logo() {
+        update_option( "multisite_login_logos_settings", "1" );
+
+        $expected = "";
+
+        ob_start();
+        $this->multisite_login_logos->display_multisite_login_logo();
+        $actual = ob_get_clean();
+
+        $this->assertEquals( $expected, $actual );
+    }
+
+    public function test_display_multisite_login_logo_should_show_custom_logo_if_setting_is_custom_logo_logo() {
+        update_option( "multisite_login_logos_settings", "3" );
+        update_option( "multisite_login_logos_custom", "tests/login-logo.png" );
+
+        $expected  = "<style type=\"text/css\">\n";
+        $expected .= ".login h1 a {\n";
+        $expected .= "background-image: url(tests/login-logo.png);\n";
+        $expected .= "width: 100%;\n";
+        $expected .= "height: 74px;\n";
+        $expected .= "}\n";
+        $expected .= "</style>\n";
+
+        ob_start();
+        $this->multisite_login_logos->display_multisite_login_logo();
+        $actual = ob_get_clean();
+
+        $this->assertEquals( $expected, $actual );
+    }
 }

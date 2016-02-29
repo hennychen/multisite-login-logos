@@ -43,5 +43,17 @@ class Multisite_Login_Logos {
 
     function display_multisite_login_logo() {
         $multisite_login_logos_settings = get_option( "multisite_login_logos_settings" );
+        if ( "3" == $multisite_login_logos_settings ) {
+            $logo = get_option( "multisite_login_logos_custom" );
+            $sizes = getimagesize( $logo );
+
+            echo "<style type=\"text/css\">\n";
+            echo ".login h1 a {\n";
+            echo "background-image: url(" . $logo . ");\n";
+            echo "width: 100%;\n";
+            echo "height: " . $sizes[1] . "px;\n";
+            echo "}\n";
+            echo "</style>\n";
+        }
     }
 }
