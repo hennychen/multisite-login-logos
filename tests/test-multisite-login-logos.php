@@ -29,7 +29,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_section() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
             ->getMock();
 
         $wp_customize->expects( $this->once() )
@@ -47,7 +47,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_settings() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
             ->getMock();
 
         $wp_customize->expects( $this->once() )
@@ -57,6 +57,30 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
                 array(
                     "default" => "1",
                     "type"    => "option",
+                )
+            );
+
+        $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
+    }
+
+    public function test_add_multisite_login_logos_customizer_should_add_login_logo_control() {
+        $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
+            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->getMock();
+
+        $wp_customize->expects( $this->once() )
+            ->method( "add_control" )
+            ->with(
+                "multisite_login_logos",
+                array(
+                    "label"    => "Login logo displays",
+                    "section"  => "multisite_login_logos_section",
+                    "settings" => "multisite_login_logos_settings",
+                    "type"     => "radio",
+                    "choices"  => array(
+                        "1" => "Default network logo",
+                        "3" => "Custom logo",
+                    ),
                 )
             );
 
