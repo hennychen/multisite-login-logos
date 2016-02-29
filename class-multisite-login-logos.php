@@ -2,7 +2,8 @@
 
 class Multisite_Login_Logos {
     function __construct() {
-        add_action( "customize_register", array( __CLASS__, "add_multisite_login_logos_customizer" ) );
+        add_action( "customize_register", array( __CLASS__, "add_multisite_login_logos_customizer" ), 10, 1 );
+        add_action( "login_head", array( __CLASS__, "display_multisite_login_logo" ), 99, 0 );
     }
 
     public function add_multisite_login_logos_customizer( $wp_customize ) {
@@ -38,5 +39,9 @@ class Multisite_Login_Logos {
                 "settings" => "multisite_login_logos_custom",
             ) )
         );
+    }
+
+    function display_multisite_login_logo() {
+        $multisite_login_logos_settings = get_option( "multisite_login_logos_settings" );
     }
 }

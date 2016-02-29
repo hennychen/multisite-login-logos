@@ -14,9 +14,9 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
     public function test_add_multisite_login_logos_customizer_is_registered_to_customize_register() {
         global $wp_filter;
 
-        $expected = "add_multisite_login_logos_customizer";
+        $expected = "Multisite_Login_Logos::add_multisite_login_logos_customizer";
         $key      = array_keys( $wp_filter["customize_register"][10] );
-        $this->assertContains( $expected, $key[0] );
+        $this->assertEquals( $expected, $key[0] );
 
         $expected = "add_multisite_login_logos_customizer";
         $function = $wp_filter["customize_register"][10][ $key[0] ]["function"];
@@ -125,5 +125,21 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
             ->with( $image_control_object );
 
         $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
+    }
+
+    public function test_display_multisite_login_logo_is_registered_to_login_head() {
+        global $wp_filter;
+
+        $expected = "display_multisite_login_logo";
+        $key      = array_keys( $wp_filter["login_head"][99] );
+        $this->assertContains( $expected, $key[1] );
+
+        $expected = "display_multisite_login_logo";
+        $function = $wp_filter["login_head"][99][ $key[1] ]["function"];
+        $this->assertEquals( $expected, $function[1] );
+
+        $expected      = 0;
+        $accepted_args = $wp_filter["login_head"][99][ $key[1] ]["accepted_args"];
+        $this->assertEquals( $expected, $accepted_args );
     }
 }
