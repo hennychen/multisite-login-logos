@@ -29,7 +29,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_section() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control", "get_setting" ) )
             ->getMock();
 
         $wp_customize->expects( $this->once() )
@@ -47,7 +47,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_settings() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control", "get_setting" ) )
             ->getMock();
 
         $wp_customize->expects( $this->at( 1 ) )
@@ -65,10 +65,10 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_control() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control", "get_setting" ) )
             ->getMock();
 
-        $wp_customize->expects( $this->once() )
+        $wp_customize->expects( $this->at( 2 ) )
             ->method( "add_control" )
             ->with(
                 "multisite_login_logos",
@@ -89,7 +89,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_custom_settings() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section", "add_setting", "add_control" ) )
+            ->setMethods( array( "add_section", "add_setting", "add_control", "get_setting" ) )
             ->getMock();
 
         $wp_customize->expects( $this->at( 3 ) )
@@ -97,9 +97,32 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
             ->with(
                 "multisite_login_logos_custom",
                 array(
-                    "type"    => "option",
+                    "type" => "option",
                 )
             );
+
+        $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
+    }
+
+    public function test_add_multisite_login_logos_customizer_should_add_login_logo_custom_control() {
+        $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
+            ->setMethods( array( "add_section", "add_setting", "add_control", "get_setting" ) )
+            ->getMock();
+
+        $image_control_object = new WP_Customize_Image_Control(
+            $wp_customize,
+            "multisite_login_logos_custom",
+            array(
+                "label"    => "Custom logo",
+                "section"  => "multisite_login_logos_section",
+                "settings" => "multisite_login_logos_custom",
+            )
+        );
+        $image_control_object->instance_number = 6;
+
+        $wp_customize->expects( $this->at( 5 ) )
+            ->method( "add_control" )
+            ->with( $image_control_object );
 
         $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
     }

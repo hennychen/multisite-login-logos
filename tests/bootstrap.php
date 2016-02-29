@@ -7,6 +7,7 @@ require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
     require dirname( __FILE__ ) . '/../multisite-login-logos.php';
+    require '/tmp/wordpress/wp-includes/class-wp-customize-control.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

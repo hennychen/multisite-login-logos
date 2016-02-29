@@ -30,5 +30,13 @@ class Multisite_Login_Logos {
         $wp_customize->add_setting( "multisite_login_logos_custom", array(
             "type" => "option",
         ) );
+
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control( $wp_customize, "multisite_login_logos_custom", array(
+                "label"    => "Custom logo",
+                "section"  => "multisite_login_logos_section",
+                "settings" => "multisite_login_logos_custom",
+            ) )
+        );
     }
 }
