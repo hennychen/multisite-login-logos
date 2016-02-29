@@ -11,15 +11,15 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
         global $wp_filter;
 
         $expected = "add_multisite_login_logos_customizer";
-        $key      = array_keys( $wp_filter["customize_register"][10] )[0];
-        $this->assertContains( $expected, $key );
+        $key      = array_keys( $wp_filter["customize_register"][10] );
+        $this->assertContains( $expected, $key[0] );
 
         $expected = "add_multisite_login_logos_customizer";
-        $function = $wp_filter["customize_register"][10][ $key ]["function"];
+        $function = $wp_filter["customize_register"][10][ $key[0] ]["function"];
         $this->assertEquals( $expected, $function[1] );
 
         $expected      = 1;
-        $accepted_args = $wp_filter["customize_register"][10][ $key ]["accepted_args"];
+        $accepted_args = $wp_filter["customize_register"][10][ $key[0] ]["accepted_args"];
         $this->assertEquals( $expected, $accepted_args );
     }
 }
