@@ -29,7 +29,7 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
     public function test_add_multisite_login_logos_customizer_should_add_login_logo_section() {
         $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
-            ->setMethods( array( "add_section" ) )
+            ->setMethods( array( "add_section", "add_setting" ) )
             ->getMock();
 
         $wp_customize->expects( $this->once() )
@@ -39,6 +39,24 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
                 array(
                     "title"    => "Login Logo",
                     "priority" => 55,
+                )
+            );
+
+        $this->multisite_login_logos->add_multisite_login_logos_customizer( $wp_customize );
+    }
+
+    public function test_add_multisite_login_logos_customizer_should_add_login_logo_settings() {
+        $wp_customize = $this->getMockBuilder( "WP_Customize_Manager" )
+            ->setMethods( array( "add_section", "add_setting" ) )
+            ->getMock();
+
+        $wp_customize->expects( $this->once() )
+            ->method( "add_setting" )
+            ->with(
+                "multisite_login_logos_settings",
+                array(
+                    "default" => "1",
+                    "type"    => "option",
                 )
             );
 

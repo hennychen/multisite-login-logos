@@ -10,5 +10,10 @@ class Multisite_Login_Logos {
             "title"    => "Login Logo",
             "priority" => 55,
         ) );
+
+        $wp_customize->add_setting( "multisite_login_logos_settings", array(
+            "default" => "1",
+            "type"    => "option",
+        ) );
     }
 }
