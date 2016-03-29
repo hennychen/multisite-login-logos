@@ -1,5 +1,7 @@
 # Multisite Login Logos
 
+[![Build Status](https://travis-ci.org/prontotools/multisite-login-logos.svg?branch=develop)](https://travis-ci.org/prontotools/multisite-login-logos)
+
 Easily change the logo on the WP login screen using WordPress's Customize settings. Choose between the default network logo or any other image you upload.
 
 Developer Guide
