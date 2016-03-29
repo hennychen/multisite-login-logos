@@ -173,4 +173,27 @@ class Multisite_Login_Logos_Test extends WP_UnitTestCase {
 
         $this->assertEquals( $expected, $actual );
     }
+
+    public function test_display_multisite_login_logo_should_use_https_if_ssl_is_enabled() {
+        $_SERVER["HTTPS"] = "on";
+
+        update_option( "multisite_login_logos_settings", "3" );
+        update_option( "multisite_login_logos_custom", "http://local.bypronto.dev/wp-content/uploads/2016/03/51323de85a313e11.png" );
+
+        $expected  = "<style type=\"text/css\">\n";
+        $expected .= ".login h1 a {\n";
+        $expected .= "background-image: url(https://local.bypronto.dev/wp-content/uploads/2016/03/51323de85a313e11.png);\n";
+        $expected .= "width: 100%;\n";
+        $expected .= "height: 0px;\n";
+        $expected .= "}\n";
+        $expected .= "</style>\n";
+
+        ob_start();
+        $this->multisite_login_logos->display_multisite_login_logo();
+        $actual = ob_get_clean();
+
+        $this->assertEquals( $expected, $actual );
+
+        $_SERVER["HTTPS"] = null;
+    }
 }

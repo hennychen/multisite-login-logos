@@ -45,7 +45,17 @@ class Multisite_Login_Logos {
         $multisite_login_logos_settings = get_option( "multisite_login_logos_settings" );
         if ( "3" == $multisite_login_logos_settings ) {
             $logo = get_option( "multisite_login_logos_custom" );
-            $sizes = getimagesize( $logo );
+            if ( true == is_ssl() ) {
+                $logo = str_replace( "http://", "https://", $logo );
+            }
+
+            try {
+                $sizes = getimagesize( $logo );
+            }
+            catch ( Exception $e ) {
+                $sizes = array( 0, 0 );
+                error_log( "Caught exception: " . $e->getMessage() );
+            }
 
             echo "<style type=\"text/css\">\n";
             echo ".login h1 a {\n";
