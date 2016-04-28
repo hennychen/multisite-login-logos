@@ -11,6 +11,8 @@ Easily change the logo on the WP login screen using WordPress's Customize settin
 
 == Description ==
 
+> **[GitHub](https://github.com/prontotools/multisite-login-logos "Fork")**
+
 Do some or all of the websites in your multisite network require a custom login logo? Well now you’re in luck!
 
 This plugin allows you to customize the login logo per site, with the option to use the network’s default logo as well.
