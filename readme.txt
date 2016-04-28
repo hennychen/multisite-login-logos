@@ -7,7 +7,7 @@ Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily change the logo on the WP login screen using WordPress's Customize settings. Choose between the default network logo or any other image you upload.
+Easily change the logo on a network site's WP login screen using WordPress's Customize settings.
 
 == Description ==
 
