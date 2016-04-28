@@ -11,25 +11,23 @@ Easily change the logo on a network site's WP login screen using WordPress's Cus
 
 == Description ==
 
-> **[GitHub](https://github.com/prontotools/multisite-login-logos "Fork")**
+Do some or all of the websites in your multisite network require a custom login logo? Well now you're in luck!
 
-Do some or all of the websites in your multisite network require a custom login logo? Well now you’re in luck!
+This plugin allows you to customize the login logo per site, with the option to use the network's default logo as well.
 
-This plugin allows you to customize the login logo per site, with the option to use the network’s default logo as well.
+Once installed, access your theme's Customize settings to update the logo.
 
-Once installed, access your theme’s Customize settings to update the logo.
-
+Here is our [Git repository](https://github.com/prontotools/multisite-login-logos "Fork"). Feel free to contribute!
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress.
-1. Access your theme’s Customize settings to update the logo.
-
+1. Access your theme's Customize settings to update the logo.
 
 == Screenshots ==
 
-1. Access your site’s Theme Customizer settings.
+1. Access your site's Theme Customizer settings.
 1. Choose between the default network logo, or upload a custom one.
 
 == Changelog ==
