@@ -5,13 +5,14 @@
 # Credit: https://guh.me/how-to-publish-a-wordpress-plugin-from-github
 # Semantic Versioning: http://semver.org/
 
+PLUGIN_NAME=multisite-login-logos
 BASE_DIR=`pwd`
 TMP_DIR=$BASE_DIR/tmp
 
 mkdir $TMP_DIR
-svn co http://plugins.svn.wordpress.org/multisite-login-logos/ $TMP_DIR
+svn co http://plugins.svn.wordpress.org/$PLUGIN_NAME/ $TMP_DIR
 cd $TMP_DIR/trunk
-git clone --recursive https://github.com/prontotools/multisite-login-logos.git tmp
+git clone --recursive https://github.com/prontotools/$PLUGIN_NAME.git tmp
 cp -r tmp/* .
 rm -rf tmp
 rm -rf .git*
