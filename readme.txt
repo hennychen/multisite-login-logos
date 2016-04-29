@@ -32,6 +32,10 @@ Here is our [Git repository](https://github.com/prontotools/multisite-login-logo
 
 == Changelog ==
 
+= 1.0.2 =
+
+* Revise readme.
+
 = 1.0.1 =
 
 * Supports SSL if enabled.
