@@ -22,13 +22,13 @@ Here is our [Git repository](https://github.com/prontotools/multisite-login-logo
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress.
-1. Access your theme's Customize settings to update the logo.
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Access your theme's Customize settings to update the logo.
 
 == Screenshots ==
 
 1. Access your site's Theme Customizer settings.
-1. Choose between the default network logo, or upload a custom one.
+2. Choose between the default network logo, or upload a custom one.
 
 == Changelog ==
 
