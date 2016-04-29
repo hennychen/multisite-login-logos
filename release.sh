@@ -20,6 +20,12 @@ version=`head -n 1 VERSION`
 cd $TMP_DIR
 svn add trunk/* --force
 svn ci -m "Release $version"
-svn cp trunk tags/$version
+if [ -e tags/$version ]
+then
+  cp -r trunk/* tags/$version
+  svn add tags/$version --force
+else
+  svn cp trunk tags/$version
+fi
 svn ci -m "Tagging version $version"
 rm -rf $TMP_DIR
