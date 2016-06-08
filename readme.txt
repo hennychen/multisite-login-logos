@@ -1,4 +1,4 @@
-=== Multisite Login Logos by Pronto Tools ===
+=== Multisite Login Logos ===
 Contributors: prontotools, zkancs
 Tags: multisite, login, logo, custom, site
 Requires at least: 4.0
